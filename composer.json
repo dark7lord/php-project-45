@@ -1,0 +1,22 @@
+{
+    "name": "hexlet/code",
+    "description": "Project PHP",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "gopal",
+            "email": "gopal@student.21-school.ru"
+        }
+    ],
+    "license": "MIT",
+    "bin": [
+        "bin/brain-games"
+    ],
+    "require": {
+        "wp-cli/php-cli-tools": "^0.11.22"
+    }
+}
