@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Cli\welcome;
+use function BrainGames\Cli\printMessage;
+use function BrainGames\Cli\askAnswer;
+use function BrainGames\Cli\congratulate;
+
+$name = welcome();
+$task = 'Answer "yes" if the number is even, otherwise answer "no".';
+printMessage($task);
+
+function startQuestions($name, $attempts = 3)
+{
+    while ($attempts) {
+        $num = rand(0, 100);
+        $rightAnswer = $num % 2 === 0 ? 'yes' : 'no';
+        $isRightAnswer = askAnswer($num, $rightAnswer, $name);
+
+        if ($isRightAnswer === true) {
+            $attempts -= 1;
+        } else {
+            $attempts = 3;
+        }
+    }
+
+    congratulate($name);
+}
+
+startQuestions($name);
