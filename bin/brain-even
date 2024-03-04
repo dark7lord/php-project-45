@@ -7,27 +7,30 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use function BrainGames\Cli\welcome;
 use function BrainGames\Cli\printMessage;
 use function BrainGames\Cli\askAnswer;
-use function BrainGames\Cli\congratulate;
+use function BrainGames\Cli\finishGame;
 
 $name = welcome();
 $task = 'Answer "yes" if the number is even, otherwise answer "no".';
 printMessage($task);
 
-function startQuestions($name, $attempts = 3)
+function startQuestions($name, $attempts = 3): void
 {
+    $isWin = true;
+
     while ($attempts) {
         $num = rand(0, 100);
         $rightAnswer = $num % 2 === 0 ? 'yes' : 'no';
-        $isRightAnswer = askAnswer($num, $rightAnswer, $name);
+        $answer = askAnswer($num, $rightAnswer, $name);
 
-        if ($isRightAnswer === true) {
-            $attempts -= 1;
-        } else {
-            $attempts = 3;
+        if ($answer !== true) {
+            printMessage("'$answer' is wrong answer ;(. Correct answer was '$rightAnswer'.");
+            $isWin = false;
+            break;
         }
+        $attempts -= 1;
     }
 
-    congratulate($name);
+    finishGame($name, $isWin);
 }
 
 startQuestions($name);

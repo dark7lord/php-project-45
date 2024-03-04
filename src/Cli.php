@@ -5,7 +5,7 @@ namespace BrainGames\Cli;
 use function cli\line;
 use function cli\prompt;
 
-function welcome()
+function welcome(): string
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?', marker: ' ');
@@ -13,12 +13,12 @@ function welcome()
     return $name;
 }
 
-function printMessage($message)
+function printMessage($message): void
 {
     line($message);
 }
 
-function askAnswer($question, $rightAnswer, $name)
+function askAnswer($question, $rightAnswer, $name): bool|string
 {
     line("Question: %s", $question);
     $answer = prompt("Answer");
@@ -27,13 +27,12 @@ function askAnswer($question, $rightAnswer, $name)
         line('Correct!');
         return true;
     } else {
-        line("'$answer' is wrong answer ;(. Correct answer was '%s'.", $rightAnswer);
-        line("Let's try again, %s!", $name);
-        return false;
+        return $answer;
     }
 }
 
-function congratulate($name)
+function finishGame($name, $result): void
 {
-    line("Congratulations, %s!", $name);
+    $finalSpeech = $result ? "Congratulations" : "Let's try again";
+    line("%s, %s!", $finalSpeech, $name);
 }
