@@ -8,8 +8,13 @@ use function BrainGames\Cli\printDescription;
 use function BrainGames\Cli\printRightAnswer;
 use function BrainGames\Cli\welcome;
 
-function runGame($description, $fnGetParams, $fnMakeQuestion, $fnGetRightAnswer, $attempts = 3): void
-{
+function runGame(
+    string $description,
+    callable $fnGetParams,
+    callable $fnMakeQuestion,
+    callable $fnGetRightAnswer,
+    int $attempts = 3
+): void {
     $name = welcome();
     printDescription($description);
 

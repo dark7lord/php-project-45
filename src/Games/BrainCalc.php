@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\BrainCalc;
 
-function generateParams($minNum = 0, $maxNum = 100): array
+function generateParams(int $minNum = 0, int $maxNum = 100): array
 {
     $num1 = rand($minNum, $maxNum);
     $num2 = rand($minNum, $maxNum);
@@ -12,15 +12,15 @@ function generateParams($minNum = 0, $maxNum = 100): array
     return [$num1, $num2, $operator];
 }
 
-function makeQuestion($arrParams): string
+function makeQuestion(array $params): string
 {
-    [$num1, $num2, $operator] = $arrParams;
+    [$num1, $num2, $operator] = $params;
     return "$num1 $operator $num2";
 }
 
-function getRightAnswer($arrParams): string
+function getRightAnswer(array $params): string
 {
-    [$num1, $num2, $operator] = $arrParams;
+    [$num1, $num2, $operator] = $params;
 
     $actions = [
         '+' => fn($a, $b) =>  $a + $b,

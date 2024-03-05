@@ -4,7 +4,7 @@ namespace BrainGames\Games\BrainGcd;
 
 use function BrainGames\Utils\Gcd\gcd;
 
-function generateParams($minNum = 0, $maxNum = 100): array
+function generateParams(int $minNum = 0, int $maxNum = 100): array
 {
     $num1 = rand($minNum, $maxNum);
     $num2 = rand($minNum, $maxNum);
@@ -12,14 +12,14 @@ function generateParams($minNum = 0, $maxNum = 100): array
     return [$num1, $num2];
 }
 
-function makeQuestion($arrParams): string
+function makeQuestion(array $params): string
 {
-    [$num1, $num2] = $arrParams;
+    [$num1, $num2] = $params;
     return "$num1 $num2";
 }
 
-function getRightAnswer($arrParams): string
+function getRightAnswer(array $params): string
 {
-    [$num1, $num2] = $arrParams;
+    [$num1, $num2] = $params;
     return gcd($num1, $num2);
 }

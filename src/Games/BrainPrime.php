@@ -4,19 +4,19 @@ namespace BrainGames\Games\BrainPrime;
 
 use function BrainGames\Utils\IsPrime\isPrime;
 
-function generateParams($minNum = 0, $maxNum = 100): array
+function generateParams(int $minNum = 0, int $maxNum = 100): array
 {
     return [rand($minNum, $maxNum)];
 }
 
-function makeQuestion($arrParams): string
+function makeQuestion(array $params): string
 {
-    [$num] = $arrParams;
+    [$num] = $params;
     return "$num";
 }
 
-function getRightAnswer($arrParams): string
+function getRightAnswer(array $params): string
 {
-    [$num] = $arrParams;
+    [$num] = $params;
     return isPrime($num) ? 'yes' : 'no';
 }

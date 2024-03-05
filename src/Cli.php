@@ -13,17 +13,17 @@ function welcome(): string
     return $name;
 }
 
-function printDescription($description): void
+function printDescription(string $description): void
 {
     line($description);
 }
 
-function printRightAnswer($incorrectAnswer, $correctAnswer): void
+function printRightAnswer(string $incorrectAnswer, string $correctAnswer): void
 {
     line("'%s' is wrong answer ;(. Correct answer was '%s'", $incorrectAnswer, $correctAnswer);
 }
 
-function askAnswer($question, $rightAnswer): bool|string
+function askAnswer(string $question, string $rightAnswer): bool|string
 {
     line("Question: %s", $question);
     $answer = prompt("Answer");
@@ -36,7 +36,7 @@ function askAnswer($question, $rightAnswer): bool|string
     }
 }
 
-function finishGame($name, $result): void
+function finishGame(string $name, string $result): void
 {
     $finalSpeech = $result ? "Congratulations" : "Let's try again";
     line("%s, %s!", $finalSpeech, $name);

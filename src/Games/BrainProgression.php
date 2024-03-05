@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\BrainProgression;
 
-function generateParams($minLen = 5, $maxLen = 10, $minStep = 1, $maxStep = 10): array
+function generateParams(int $minLen = 5, int $maxLen = 10, int $minStep = 1, int $maxStep = 10): array
 {
     $minStartNum = 0;
     $maxFinishNum = 50;
@@ -24,14 +24,14 @@ function generateParams($minLen = 5, $maxLen = 10, $minStep = 1, $maxStep = 10):
     return [$arrProgression, $rightAnswer];
 }
 
-function makeQuestion($arrParams): string
+function makeQuestion(array $params): string
 {
-    [$arrProgression] = $arrParams;
+    [$arrProgression] = $params;
     return implode(" ", $arrProgression);
 }
 
-function getRightAnswer($arrParams): string
+function getRightAnswer(array $params): string
 {
-    [, $rightAnswer] = $arrParams;
+    [, $rightAnswer] = $params;
     return $rightAnswer;
 }
