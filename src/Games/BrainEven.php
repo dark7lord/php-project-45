@@ -2,8 +2,6 @@
 
 namespace BrainGames\Games\BrainEven;
 
-use function BrainGames\Engine\runGame;
-
 function generateParams($minNum = 0, $maxNum = 100): array
 {
     return [rand($minNum, $maxNum)];

@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Engine\runGame;
+use function BrainGames\Games\BrainGcd\generateParams;
+use function BrainGames\Games\BrainGcd\makeQuestion;
+use function BrainGames\Games\BrainGcd\getRightAnswer;
+
+$fnGenerateParams = fn() => generateParams();
+$fnMakeQuestion = fn($arrParams) => makeQuestion($arrParams);
+$fnGetRightAnswer = fn($arrParams) => getRightAnswer($arrParams);
+
+$description = 'Find the greatest common divisor of given numbers.';
+
+runGame($description, $fnGenerateParams, $fnMakeQuestion, $fnGetRightAnswer);

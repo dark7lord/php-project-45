@@ -9,7 +9,6 @@ use function BrainGames\Games\BrainEven\generateParams;
 use function BrainGames\Games\BrainEven\makeQuestion;
 use function BrainGames\Games\BrainEven\getRightAnswer;
 
-
 $fnGenerateParams = fn() => generateParams();
 $fnMakeQuestion = fn($arrParams) => makeQuestion($arrParams);
 $fnGetRightAnswer = fn($arrParams) => getRightAnswer($arrParams);
