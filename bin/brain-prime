@@ -13,6 +13,6 @@ $fnGenerateParams = fn() => generateParams();
 $fnMakeQuestion = fn($arrParams) => makeQuestion($arrParams);
 $fnGetRightAnswer = fn($arrParams) => getRightAnswer($arrParams);
 
-$description = 'What number is missing in the progression?';
+$description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 runGame($description, $fnGenerateParams, $fnMakeQuestion, $fnGetRightAnswer);
