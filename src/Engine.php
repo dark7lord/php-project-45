@@ -4,6 +4,7 @@ namespace BrainGames\Engine;
 
 use function BrainGames\Cli\askAnswer;
 use function BrainGames\Cli\finishGame;
+use function BrainGames\Cli\praise;
 use function BrainGames\Cli\printDescription;
 use function BrainGames\Cli\printRightAnswer;
 use function BrainGames\Cli\welcome;
@@ -26,11 +27,12 @@ function runGame(
         $rightAnswer = (string) $fnGetRightAnswer($arrParams);
         $answer = askAnswer($question, $rightAnswer);
 
-        if ($answer !== true) {
+        if ($answer !== $rightAnswer) {
             printRightAnswer($answer, $rightAnswer);
             $isWin = false;
             break;
         }
+        praise();
         $attempts -= 1;
     }
 

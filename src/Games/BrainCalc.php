@@ -28,5 +28,5 @@ function getRightAnswer(array $params): string
         '*' => fn($a, $b) =>  $a * $b,
     ];
 
-    return $actions[$operator]($num1, $num2);
+    return (string) $actions[$operator]($num1, $num2);
 }

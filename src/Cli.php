@@ -23,20 +23,18 @@ function printRightAnswer(string $incorrectAnswer, string $correctAnswer): void
     line("'%s' is wrong answer ;(. Correct answer was '%s'", $incorrectAnswer, $correctAnswer);
 }
 
-function askAnswer(string $question, string $rightAnswer): bool|string
+function askAnswer(string $question, string $rightAnswer): string
 {
     line("Question: %s", $question);
-    $answer = prompt("Answer");
-
-    if ($answer === $rightAnswer) {
-        line('Correct!');
-        return true;
-    } else {
-        return $answer;
-    }
+    return prompt("Answer");
 }
 
-function finishGame(string $name, string|false $isWin): void
+function praise(): void
+{
+    line("Correct!");
+}
+
+function finishGame(string $name, bool $isWin): void
 {
     $finalSpeech = $isWin !== false ? "Congratulations" : "Let's try again";
     line("%s, %s!", $finalSpeech, $name);

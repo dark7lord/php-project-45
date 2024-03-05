@@ -2,7 +2,7 @@
 
 namespace BrainGames\Utils\Gcd;
 
-function gcd($a, $b)
+function gcd(int $a, int $b): int
 {
     $x = $a;
     $y = $b;
