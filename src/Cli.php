@@ -18,7 +18,7 @@ function printDescription(string $description): void
     line($description);
 }
 
-function printRightAnswer(string $incorrectAnswer, string|false $correctAnswer): void
+function printRightAnswer(string $incorrectAnswer, string $correctAnswer): void
 {
     line("'%s' is wrong answer ;(. Correct answer was '%s'", $incorrectAnswer, $correctAnswer);
 }
@@ -36,7 +36,7 @@ function askAnswer(string $question, string $rightAnswer): bool|string
     }
 }
 
-function finishGame(string $name, bool $isWin): void
+function finishGame(string $name, string|false $isWin): void
 {
     $finalSpeech = $isWin !== false ? "Congratulations" : "Let's try again";
     line("%s, %s!", $finalSpeech, $name);
