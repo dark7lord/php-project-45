@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Engine\runGame;
+use function BrainGames\Games\BrainPrime\generateParams;
+use function BrainGames\Games\BrainPrime\makeQuestion;
+use function BrainGames\Games\BrainPrime\getRightAnswer;
+
+$fnGenerateParams = fn() => generateParams();
+$fnMakeQuestion = fn($arrParams) => makeQuestion($arrParams);
+$fnGetRightAnswer = fn($arrParams) => getRightAnswer($arrParams);
+
+$description = 'What number is missing in the progression?';
+
+runGame($description, $fnGenerateParams, $fnMakeQuestion, $fnGetRightAnswer);
