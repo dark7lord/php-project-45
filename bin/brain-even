@@ -4,33 +4,16 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use function BrainGames\Cli\welcome;
-use function BrainGames\Cli\printMessage;
-use function BrainGames\Cli\askAnswer;
-use function BrainGames\Cli\finishGame;
+use function BrainGames\Engine\runGame;
+use function BrainGames\Games\BrainEven\generateParams;
+use function BrainGames\Games\BrainEven\makeQuestion;
+use function BrainGames\Games\BrainEven\getRightAnswer;
 
-$name = welcome();
-$task = 'Answer "yes" if the number is even, otherwise answer "no".';
-printMessage($task);
 
-function startQuestions($name, $attempts = 3): void
-{
-    $isWin = true;
+$fnGenerateParams = fn() => generateParams();
+$fnMakeQuestion = fn($arrParams) => makeQuestion($arrParams);
+$fnGetRightAnswer = fn($arrParams) => getRightAnswer($arrParams);
 
-    while ($attempts) {
-        $num = rand(0, 100);
-        $rightAnswer = $num % 2 === 0 ? 'yes' : 'no';
-        $answer = askAnswer($num, $rightAnswer, $name);
+$description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-        if ($answer !== true) {
-            printMessage("'$answer' is wrong answer ;(. Correct answer was '$rightAnswer'.");
-            $isWin = false;
-            break;
-        }
-        $attempts -= 1;
-    }
-
-    finishGame($name, $isWin);
-}
-
-startQuestions($name);
+runGame($description, $fnGenerateParams, $fnMakeQuestion, $fnGetRightAnswer);

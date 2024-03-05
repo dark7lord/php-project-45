@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+
+<?php
+
+use function BrainGames\Engine\runGame;
+use function BrainGames\Games\BrainCalc\generateParams;
+use function BrainGames\Games\BrainCalc\makeQuestion;
+use function BrainGames\Games\BrainCalc\getRightAnswer;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$fnGenerateParams = fn() => generateParams();
+$fnMakeQuestion = fn($arrParams) => makeQuestion($arrParams);
+$fnGetRightAnswer = fn($arrParams) => getRightAnswer($arrParams);
+
+$description = 'What is the result of the expression?';
+
+runGame($description, $fnGenerateParams ,$fnMakeQuestion, $fnGetRightAnswer);

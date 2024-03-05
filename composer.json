@@ -6,7 +6,10 @@
             "Hexlet\\Code\\": "src/"
         },
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/Engine.php",
+            "src/Games/BrainEven.php",
+            "src/Games/BrainCalc.php"
         ]
     },
     "authors": [
@@ -18,7 +21,8 @@
     "license": "MIT",
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "require": {
         "wp-cli/php-cli-tools": "^0.11.22"

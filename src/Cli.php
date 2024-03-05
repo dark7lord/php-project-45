@@ -13,12 +13,17 @@ function welcome(): string
     return $name;
 }
 
-function printMessage($message): void
+function printDescription($description): void
 {
-    line($message);
+    line($description);
 }
 
-function askAnswer($question, $rightAnswer, $name): bool|string
+function printRightAnswer($incorrectAnswer, $correctAnswer): void
+{
+    line("'%s' is wrong answer ;(. Correct answer was '%s'", $incorrectAnswer, $correctAnswer);
+}
+
+function askAnswer($question, $rightAnswer): bool|string
 {
     line("Question: %s", $question);
     $answer = prompt("Answer");
