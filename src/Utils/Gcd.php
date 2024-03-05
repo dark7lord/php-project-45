@@ -11,5 +11,5 @@ function gcd(int $a, int $b): int
         [$x, $y] = [$y, $x];
     }
 
-    return $y ? gcd($y, $x % $y) : $x;
+    return $y !== 0 ? gcd($y, $x % $y) : $x;
 }
